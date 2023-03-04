@@ -43,7 +43,7 @@ const create = (req, res) => {
     }else{
 
         return res.status(400).json({
-            status: 'error',
+            status: 'Error',
             message: errors.mapped()
         });
     };
