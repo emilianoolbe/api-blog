@@ -94,6 +94,7 @@ const one = (req, res) => {
 
 //Eliminar artículo
 const deleteArticle = (req, res) => {
+
     Articulo.findByIdAndDelete(req.params.id).exec((error, article) => {
 
         if (error || !article) {
@@ -101,12 +102,17 @@ const deleteArticle = (req, res) => {
                 status: 'Error',
                  message: 'No se encontró el artículo seleccionado'
             });
-        };
+        }else{
+
+            let filePath = path.join(__dirname,  `../images/articles/${article.image}`);
+            fs.unlinkSync(filePath);
+            return res.status(200).json({
+                status: 'success',
+                article
+            });
+        }
+
     
-        return res.status(200).json({
-            status: 'success',
-            article
-        });
     });
 };
 

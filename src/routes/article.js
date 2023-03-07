@@ -26,7 +26,7 @@ router.delete('/article/:id', articleController.deleteArticle);
 router.put('/article/:id', validation, articleController.editArticle);
 
 //Subida de archivos
-router.post('/article/file/:id', upload.single('file0'), articleController.upload);
+router.post('/article/file/:id', upload.single('file2'), articleController.upload);
 
 //Imagen por name
 router.get('/article/file/:imgName', articleController.oneImage);
